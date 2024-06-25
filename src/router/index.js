@@ -1,39 +1,20 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Todos from '../views/Todos.vue'
-import Posts from '../views/Posts.vue'
-import Albums from '../views/Albums.vue'
-import AlbumDetail from '../views/AlbumDetail.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import TodosPage from './pages/TodosPage.vue';
+import PostsPage from './pages/PostsPage.vue';
+import AlbumsPage from './pages/AlbumsPage.vue';
+import PhotoList from './components/PhotoList.vue';
 
 const routes = [
-  {
-    path: '/',
-    redirect: '/todos'
-  },
-  {
-    path: '/todos',
-    name: 'Todos',
-    component: Todos
-  },
-  {
-    path: '/posts',
-    name: 'Posts',
-    component: Posts
-  },
-  {
-    path: '/albums',
-    name: 'Albums',
-    component: Albums
-  },
-  {
-    path: '/albums/:id',
-    name: 'AlbumDetail',
-    component: AlbumDetail
-  }
-]
+  { path: '/', redirect: '/todos' },
+  { path: '/todos', component: TodosPage },
+  { path: '/posts', component: PostsPage },
+  { path: '/albums', component: AlbumsPage },
+  { path: '/albums/:id', component: PhotoList, props: true },
+];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  history: createWebHistory(),
+  routes,
+});
 
-export default router
+export default router;
